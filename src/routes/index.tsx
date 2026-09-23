@@ -1,24 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { ServiceGrid, ReviewGrid } from '@/components/Shared'
+import hero from '@/assets/glownest-hero.jpg'
+import gallery from '@/assets/glownest-gallery.jpg'
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+export const Route = createFileRoute('/')({ head:()=>({meta:[{title:'GlowNest Beauty & Wellness | Luxury Salon'},{name:'description',content:'Hair, skin, spa and bridal beauty rituals in a calm, light-filled salon.'},{property:'og:title',content:'GlowNest Beauty & Wellness'},{property:'og:description',content:'Feel beautiful. Feel confident. Discover considered beauty and wellness rituals.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}), component: Home })
+function Home(){return <main className="px-4 pb-8 pt-8 sm:px-6 sm:pt-14"><section className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-12"><div className="order-2 lg:order-1 lg:col-span-5"><p className="eyebrow">Atelier · Est. 2016</p><h1 className="mt-5 text-balance font-display text-5xl font-light leading-none sm:text-6xl lg:text-7xl">Feel Beautiful. Feel Confident.</h1><p className="mt-6 max-w-md text-muted-foreground">An intimate beauty atelier where considered color, skin and ritual meet quiet luxury. Appointments in a calm, light-filled room made for you.</p><div className="mt-8 flex flex-wrap gap-3"><Button asChild className="rounded-full"><Link to="/booking">Book an Appointment</Link></Button><Button asChild variant="secondary" className="rounded-full"><Link to="/services">Explore Services</Link></Button></div><div className="mt-8 flex gap-5 text-xs text-muted-foreground"><span>● Same-week slots</span><span>● Licensed stylists</span></div></div><div className="order-1 lg:order-2 lg:col-span-7"><div className="glass rounded-2xl p-3"><img src={hero} width={1600} height={1200} alt="Client relaxing in the bright GlowNest salon" className="aspect-[4/3] w-full rounded-xl object-cover"/><div className="flex items-center justify-between px-3 pb-2 pt-4 text-xs text-muted-foreground"><span>In the chair · The Atelier</span><span className="eyebrow">Now booking</span></div></div></div></section><section className="section"><div className="mb-6 flex items-end justify-between"><h2 className="section-title">Signature services</h2><Link to="/services" className="text-sm text-muted-foreground">View all</Link></div><ServiceGrid limit={3}/><div className="mt-4 flex flex-col justify-between gap-5 rounded-2xl bg-primary p-7 text-primary-foreground sm:flex-row sm:items-center"><div><p className="text-xs uppercase tracking-[0.2em] opacity-70">Weekend special</p><h3 className="mt-1 font-display text-3xl">Hair + Facial, $220</h3><p className="mt-1 text-sm opacity-75">Was $250. A two-hour reset for the days that matter.</p></div><Button asChild variant="secondary" className="rounded-full"><Link to="/booking" search={{service:'Hair + Facial Combo'}}>Book this offer</Link></Button></div></section><section className="section"><h2 className="section-title mb-6">Loved by our guests</h2><ReviewGrid/></section><section className="section"><div className="mb-6 flex items-end justify-between"><h2 className="section-title">A glimpse inside</h2><Link to="/gallery" className="flex items-center gap-1 text-sm text-muted-foreground">View gallery <ArrowRight className="size-4"/></Link></div><Link to="/gallery" className="block overflow-hidden rounded-2xl"><img src={gallery} width={1808} height={1200} loading="lazy" alt="Collage of GlowNest salon work" className="w-full transition-transform duration-700 hover:scale-[1.02]"/></Link></section></main>}
