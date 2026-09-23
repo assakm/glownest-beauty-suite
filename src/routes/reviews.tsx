@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { PageIntro } from '@/components/SiteLayout'
+import { ReviewGrid } from '@/components/Shared'
+export const Route=createFileRoute('/reviews')({head:()=>({meta:[{title:'Guest Reviews | GlowNest'},{name:'description',content:'Read five-star reviews from GlowNest salon guests.'},{property:'og:title',content:'Guest Reviews | GlowNest'},{property:'og:description',content:'What our guests say about their GlowNest experience.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <main><PageIntro eyebrow="Guest book" title="Kind words, lasting glow." text="The trust our guests place in us is the most meaningful part of our work."/><div className="mx-auto max-w-6xl px-4 sm:px-6"><ReviewGrid/></div></main>})

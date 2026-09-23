@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { PageIntro } from '@/components/SiteLayout'
+import { OfferGrid } from '@/components/Shared'
+import offerImage from '@/assets/glownest-offers.jpg'
+export const Route=createFileRoute('/offers')({head:()=>({meta:[{title:'Offers & Packages | GlowNest'},{name:'description',content:'Seasonal salon packages and beauty offers from GlowNest.'},{property:'og:title',content:'GlowNest Offers & Packages'},{property:'og:description',content:'Curated beauty and wellness rituals at special package prices.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <main><PageIntro eyebrow="Seasonal edit" title="More time for yourself." text="Thoughtfully paired treatments, created for celebrations, weekends and well-earned resets."/><div className="mx-auto max-w-6xl px-4 sm:px-6"><img src={offerImage} width={1600} height={1008} loading="lazy" alt="GlowNest beauty and wellness products" className="mb-6 aspect-[16/7] w-full rounded-2xl object-cover"/><OfferGrid/></div></main>})

@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { PageIntro } from '@/components/SiteLayout'
+import { ServiceGrid } from '@/components/Shared'
+export const Route=createFileRoute('/services')({head:()=>({meta:[{title:'Salon Services | GlowNest'},{name:'description',content:'Explore GlowNest hair, facial, makeup, nail, spa and bridal services.'},{property:'og:title',content:'Salon Services | GlowNest'},{property:'og:description',content:'Considered treatments for hair, skin and wellbeing.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:()=> <main><PageIntro eyebrow="The treatment menu" title="Care, craft and a little quiet." text="Every service begins with a thoughtful consultation and ends with a ritual designed around you."/><div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6"><ServiceGrid/></div></main>})
